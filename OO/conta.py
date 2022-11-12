@@ -2,4 +2,9 @@
 
 class Conta:
 
-    pass
+    def __init__(self,numero, titular, saldo, limite):
+        print("Construtor")
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo
+        self.limite = limite
