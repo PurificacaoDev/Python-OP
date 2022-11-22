@@ -17,24 +17,40 @@ class Conta:
     def depositar(self,valor):
         self.__saldo += valor
 
+
+    #Verifica a disponibilidade de valores a sacar
+    def __pode_sacar(self, valor_a_sacar):
+        valor_disponivel = self.__saldo + self.__limite
+        return valor_a_sacar <= valor_disponivel
+
     #Saca um valor na conta criada anteriormente
     def sacar(self,valor):
-        self.__saldo -= valor
+        if(self.__pode_sacar(valor)):
+            self.__saldo -= valor
+        else:
+            print("Voce passou do limite de saque")
 
     def transfere(self,valor,destino):
         self.sacar(valor)
         destino.depositar(valor)
-    def get_saldo(self):
+
+    @property
+    def saldo(self):
         return self.__saldo
 
-    def get_titular(self):
+    @property
+    def titular(self):
         return self.__titular
+
     #Get sempre pega e e "imprime" o valor
     @property
     def limite(self):
         return self.__limite
+
     #Set sempre pega e altera o valor ou o atributo
     @limite.setter
     def limite(self, limite):
         self.__limite = limite
-
+    @staticmethod
+    def codigo_banco(self):
+        return "001"
